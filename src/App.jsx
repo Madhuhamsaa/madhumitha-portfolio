@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 
 const roles = [
   "Data & Software Developer",
@@ -12,6 +13,7 @@ function App() {
   const [roleIndex, setRoleIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
   const [darkMode, setDarkMode] = useState(true)
+  const [openProject, setOpenProject] = useState(false)
 
   const toggleTheme = () => {
     setDarkMode(!darkMode)
@@ -78,11 +80,40 @@ function App() {
             >
               LinkedIn
             </a>
+            <a href="/resume.pdf" className="btn" download>
+              Download Resume
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="about" className="section">
+      <section className="section stats">
+        <div className="container stats-grid">
+          <div className="stat">
+            <h3>3+</h3>
+            <p>Major Projects</p>
+          </div>
+
+          <div className="stat">
+            <h3>5+</h3>
+            <p>Technologies Used</p>
+          </div>
+
+          <div className="stat">
+            <h3>1</h3>
+            <p>International Internship</p>
+          </div>
+        </div>
+      </section>
+
+      <motion.section
+        id="about"
+        className="section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <div className="container">
           <h2>About Me</h2>
           <p>
@@ -91,7 +122,7 @@ function App() {
             insights and building clean, functional applications.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       <section id="skills" className="section">
         <div className="container">
@@ -127,20 +158,9 @@ function App() {
 
           <div className="projects-grid">
 
-            <div className="card">
+            <div className="card" onClick={() => setOpenProject(true)}>
               <h3>Password Validator</h3>
-              <p>
-                A password validation tool built with HTML, CSS, and JavaScript.
-                Includes regex validation and dictionary word detection.
-              </p>
-              <a
-                href="https://github.com/Madhuhamsaa/passwordvalidator"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                View Project →
-              </a>
+              <p>HTML, CSS, JavaScript password validation tool.</p>
             </div>
 
             <div className="card">
@@ -158,16 +178,42 @@ function App() {
             </div>
 
             <div className="card">
-              <h3>Power BI Benchmark Dashboard</h3>
+              <h3>Power BI Benchmark Dashboard (Internship Project)</h3>
               <p>
-                Created KPI dashboards and performed benchmarking analysis for
-                mobile applications.
+                Designed and developed KPI dashboards during internship at Strong-Node
+                to benchmark mobile applications. Performed trend analysis,
+                user behavior insights, and defined post-launch KPIs to measure
+                retention and feature usage.
+              </p>
+              <p className="confidential-note">
+                Note: Dashboard and datasets are proprietary.
               </p>
             </div>
 
           </div>
         </div>
       </section>
+
+      {openProject && (
+        <div className="modal" onClick={() => setOpenProject(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>Password Validator</h3>
+            <p>
+              Built using HTML, CSS, JavaScript.
+              Features regex validation, dictionary word detection,
+              and real-time DOM updates.
+            </p>
+            <a
+              href="https://github.com/Madhuhamsaa/passwordvalidator"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      )}
 
       <section id="contact" className="section">
         <div className="container">

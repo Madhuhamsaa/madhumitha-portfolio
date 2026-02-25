@@ -1,5 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f172a;
+  color: white;
+}
+
+.modal {
+  animation: fadeModal 0.3s ease-in;
+}
+
+@keyframes fadeModal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .navbar {
@@ -27,7 +53,7 @@ html {
 .navbar li {
   cursor: pointer;
   color: #cbd5e1;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .navbar li:hover {
@@ -36,6 +62,7 @@ html {
 
 .section {
   padding: 120px 0;
+  animation: fadeIn 1s ease-in;
 }
 
 .section h2 {
@@ -61,7 +88,7 @@ html {
   background: #1e293b;
   padding: 20px;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -75,9 +102,6 @@ html {
   margin: auto;
 }
 
-.section {
-  animation: fadeIn 1s ease-in;
-}
 
 @keyframes fadeIn {
   from {
@@ -124,7 +148,7 @@ html {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -138,7 +162,7 @@ html {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
